@@ -1,21 +1,25 @@
 # Randomizer
 
-**TODO: Add description**
+Randomizer generates random strings for Elixir projects.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `randomizer` to your list of dependencies in `mix.exs`:
+Add `randomizer` to your list of dependencies
 
 ```elixir
 def deps do
   [
-    {:randomizer, "~> 0.1.0"}
+    {:randomizer, "~> 1.0.0"}
   ]
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/randomizer](https://hexdocs.pm/randomizer).
+## Documentation
+
+You can find the [documentation online](https://hexdocs.pm/randomizer).
+
+## License
+
+This project is made available under the terms of the Apache 2.0 license which
+can be found in the `LICENSE` and `LICENSE-2.0` files in this source tree.
 
