@@ -19,20 +19,20 @@ defmodule Randomizer do
 
   ## Example
 
-    iex> Randomizer.generate!(20)
-    "PEeAPSFmEIxJDVeN8ioH"
+      iex> Randomizer.generate!(20)
+      "PEeAPSFmEIxJDVeN8ioH"
 
-    iex> Randomizer.generate!(15, :alpha)
-    "PEbDWKRCKJVWkfp"
+      iex> Randomizer.generate!(15, :alpha)
+      "PEbDWKRCKJVWkfp"
 
-    iex> Randomizer.generate!(30, :downcase)
-    "nqvvrbvkhciwzfbcocysvbdiyrcqyd"
-
-    iex> Randomizer.generate!(10, :numeric)
-    "7721725515"
-
-    iex> Randomizer.generate!(25, :upcase)
-    "CZAIDPFTRZNGNKETOZCJNUCRUTXTYX"
+      iex> Randomizer.generate!(30, :downcase)
+      "nqvvrbvkhciwzfbcocysvbdiyrcqyd"
+  
+      iex> Randomizer.generate!(10, :numeric)
+      "7721725515"
+  
+      iex> Randomizer.generate!(25, :upcase)
+      "CZAIDPFTRZNGNKETOZCJNUCRUTXTYX"
   """
   def generate!(length, type \\ :all) do
     type
