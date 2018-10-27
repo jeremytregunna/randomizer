@@ -33,10 +33,10 @@ defmodule Randomizer do
 
       iex> Randomizer.generate!(30, :downcase)
       "nqvvrbvkhciwzfbcocysvbdiyrcqyd"
-  
+
       iex> Randomizer.generate!(10, :numeric)
       "7721725515"
-  
+
       iex> Randomizer.generate!(25, :upcase)
       "CZAIDPFTRZNGNKETOZCJNUCRUTXTYX"
   """
