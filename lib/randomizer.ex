@@ -6,20 +6,22 @@ defmodule Randomizer do
   @letters "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   @numbers "0123456789"
 
+  @typedoc """
+  Defines random-string types
+
+  * `:all` - random string of both letters and numbers
+  * `:alpha` - random string of letters
+  * `:downcase` - random string of lowercase, non-numeric characters
+  * `:numeric` - random string of numbers
+  * `:upcase` - random string of uppercase, non-numeric characters
+
+  """
   @type type() :: :all | :alpha | :downcase | :numeric | :upcase
 
   @doc """
   Generates a string based on random characters of a given length.
 
   Raises an error when passed a non-supported type
-
-  ## Options
-
-  * `:all` - random string letters and numbers
-  * `:alpha` - random string of letters
-  * `:downcase` - random string of lowercase non-numeric characters
-  * `:numeric` - numeric random string
-  * `:upcase` - upper case non-numeric random string
 
   ## Examples
 
@@ -38,12 +40,15 @@ defmodule Randomizer do
       iex> Randomizer.generate!(25, :upcase)
       "CZAIDPFTRZNGNKETOZCJNUCRUTXTYX"
   """
+  @spec generate!(pos_integer(), type()) :: String.t()
   def generate!(length, type \\ :all) do
     type
     |> get_characters!()
     |> String.split("", trim: true)
     |> (&do_generate(length, &1)).()
   end
+
+  # Private
 
   defp do_generate(length, characters) do
     length
