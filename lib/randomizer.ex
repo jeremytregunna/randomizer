@@ -62,7 +62,7 @@ defmodule Randomizer do
   defp get_characters!(:downcase), do: String.downcase(@letters)
   defp get_characters!(:numeric), do: @numbers
   defp get_characters!(:upcase), do: @letters
-  defp get_characters!(type), do: raise("Unsupoorted Randomizer type. Received #{inspect(type)}")
+  defp get_characters!(type), do: raise("Unsupported Randomizer type. Received #{inspect(type)}")
 
   defp get_range(length) when length > 1, do: 1..length
   defp get_range(_length), do: [1]
