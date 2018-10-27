@@ -6,6 +6,8 @@ defmodule Randomizer do
   @letters "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   @numbers "0123456789"
 
+  @type type() :: :all | :alpha | :downcase | :numeric | :upcase
+
   @doc """
   Generates a string based on random characters of a given length.
 
