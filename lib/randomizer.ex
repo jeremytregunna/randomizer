@@ -17,7 +17,7 @@ defmodule Randomizer do
   * `:numeric` - numeric random string
   * `:upcase` - upper case non-numeric random string
 
-  ## Example
+  ## Examples
 
       iex> Randomizer.generate!(20)
       "PEeAPSFmEIxJDVeN8ioH"
