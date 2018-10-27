@@ -7,7 +7,9 @@ defmodule Randomizer do
   @numbers "0123456789"
 
   @doc """
-  Generates a string based on random characters of a given length
+  Generates a string based on random characters of a given length.
+
+  Raises an error when passed a non-supported type
 
   ## Options
 
