@@ -6,18 +6,24 @@ defmodule Randomizer do
   @letters "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   @numbers "0123456789"
 
-  @doc """
-  Generates a string based on random characters of a given length
+  @typedoc """
+  Defines random-string types
 
-  ## Options
-
-  * `:all` - random string letters and numbers
+  * `:all` - random string of both letters and numbers
   * `:alpha` - random string of letters
-  * `:downcase` - random string of lowercase non-numeric characters
-  * `:numeric` - numeric random string
-  * `:upcase` - upper case non-numeric random string
+  * `:downcase` - random string of lowercase, non-numeric characters
+  * `:numeric` - random string of numbers
+  * `:upcase` - random string of uppercase, non-numeric characters
 
-  ## Example
+  """
+  @type type() :: :all | :alpha | :downcase | :numeric | :upcase
+
+  @doc """
+  Generates a string based on random characters of a given length.
+
+  Raises an error when passed a non-supported type
+
+  ## Examples
 
       iex> Randomizer.generate!(20)
       "PEeAPSFmEIxJDVeN8ioH"
@@ -27,19 +33,22 @@ defmodule Randomizer do
 
       iex> Randomizer.generate!(30, :downcase)
       "nqvvrbvkhciwzfbcocysvbdiyrcqyd"
-  
+
       iex> Randomizer.generate!(10, :numeric)
       "7721725515"
-  
+
       iex> Randomizer.generate!(25, :upcase)
       "CZAIDPFTRZNGNKETOZCJNUCRUTXTYX"
   """
+  @spec generate!(pos_integer(), type()) :: String.t()
   def generate!(length, type \\ :all) do
     type
     |> get_characters!()
     |> String.split("", trim: true)
     |> (&do_generate(length, &1)).()
   end
+
+  # Private
 
   defp do_generate(length, characters) do
     length
@@ -53,7 +62,7 @@ defmodule Randomizer do
   defp get_characters!(:downcase), do: String.downcase(@letters)
   defp get_characters!(:numeric), do: @numbers
   defp get_characters!(:upcase), do: @letters
-  defp get_characters!(type), do: raise("Unsupoorted Randomizer type. Received #{inspect(type)}")
+  defp get_characters!(type), do: raise("Unsupported Randomizer type. Received #{inspect(type)}")
 
   defp get_range(length) when length > 1, do: 1..length
   defp get_range(_length), do: [1]
