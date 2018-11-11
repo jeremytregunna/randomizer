@@ -48,6 +48,34 @@ defmodule Randomizer do
     |> (&do_generate(length, &1)).()
   end
 
+  @doc """
+  Generates a random string of words
+
+  ## Options
+
+  * `:dictionary` - Path to an alternative dictionary file
+
+  You can also put this into your application config.
+
+  ## Example
+
+      # config/config.exs
+      use Config
+      config :randomizer, dictionary: "/usr/share/dict/words"
+
+      # iex
+      iex> Randomizer.words(3)
+      "relates mine incomplete"
+  """
+  def words(length, opts \\ []) do
+    opts
+    |> Keyword.get(:dictionary, Application.get_env(:randomizer, :dictionary))
+    |> File.stream!()
+    |> Stream.map(&String.trim_trailing/1)
+    |> Enum.take_random(length)
+    |> Enum.join(" ")
+  end
+
   # Private
 
   defp do_generate(length, characters) do

@@ -2,6 +2,21 @@ defmodule RandomizerTest do
   use ExUnit.Case
   use ExUnitProperties
 
+  defp do_test(:words, size, regex) do
+    path = Path.join(System.cwd(), "priv/randomizer/words")
+    random = Randomizer.words(size, dictionary: path)
+    assert size == Enum.count(String.split(random))
+
+    count =
+      regex
+      |> Regex.scan(random)
+      |> List.flatten()
+      |> Enum.count()
+
+    assert size == count
+    assert String.match?(random, regex)
+  end
+
   defp do_test(type, size, regex) do
     random = Randomizer.generate!(size, type)
     assert size == String.length(random)
@@ -41,5 +56,12 @@ defmodule RandomizerTest do
               list != [],
               size <- member_of(list),
               do: do_test(:alpha, size, ~r/[A-Za-z]/)
+  end
+
+  property "generates random words" do
+    check all list <- list_of(positive_integer()),
+              list != [],
+              size <- member_of(list),
+              do: do_test(:words, size, ~r/\b[A-Za-z]+\b/)
   end
 end
