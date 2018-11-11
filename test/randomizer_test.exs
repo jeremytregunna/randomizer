@@ -4,7 +4,7 @@ defmodule RandomizerTest do
 
   defp do_test(:words, size, regex) do
     path = Path.join(System.cwd(), "priv/randomizer/words")
-    random = Randomizer.words(size, dictionary: path)
+    random = Randomizer.words!(size, dictionary: path)
     assert size == Enum.count(String.split(random))
 
     count =

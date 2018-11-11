@@ -64,10 +64,10 @@ defmodule Randomizer do
       config :randomizer, dictionary: "/usr/share/dict/words"
 
       # iex
-      iex> Randomizer.words(3)
+      iex> Randomizer.words!(3)
       "relates mine incomplete"
   """
-  def words(length, opts \\ []) do
+  def words!(length, opts \\ []) do
     opts
     |> Keyword.get(:dictionary, Application.get_env(:randomizer, :dictionary))
     |> File.stream!()
