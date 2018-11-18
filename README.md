@@ -9,7 +9,7 @@ Add `randomizer` to your list of dependencies
 ```elixir
 def deps do
   [
-    {:randomizer, "~> 1.0.0"}
+    {:randomizer, "~> 1.1.0"}
   ]
 end
 ```
