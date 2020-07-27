@@ -20,8 +20,8 @@ defmodule Randomizer.MixProject do
 
   defp deps do
     [
-      {:ex_doc, "~> 0.19.1", only: :dev},
-      {:stream_data, "~> 0.4.2", only: :test}
+      {:ex_doc, "~> 0.22.2", only: :dev},
+      {:stream_data, "~> 0.5", only: :test}
     ]
   end
 

@@ -3,7 +3,8 @@ defmodule RandomizerTest do
   use ExUnitProperties
 
   defp do_test(:words, size, regex) do
-    path = Path.join(System.cwd(), "priv/randomizer/words")
+    {:ok, cwd} = File.cwd()
+    path = Path.join(cwd, "priv/randomizer/words")
     random = Randomizer.words!(size, dictionary: path)
     assert size == Enum.count(String.split(random))
 
